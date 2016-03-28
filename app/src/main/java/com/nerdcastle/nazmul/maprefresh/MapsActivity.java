@@ -147,16 +147,16 @@ public class MapsActivity extends AppCompatActivity implements
 
         //zoom to current position:
         float zoom = mGoogleMap.getCameraPosition().zoom;
-        if(zoom<15){
+        if(zoom<=15){
             CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(latLng).bearing(location.getBearing()).zoom(15).build();
+                    .target(latLng).bearing(mGoogleMap.getCameraPosition().bearing).zoom(15).build();
 
             mGoogleMap.animateCamera(CameraUpdateFactory
                     .newCameraPosition(cameraPosition));
         }
         else{
             CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(latLng).bearing(location.getBearing()).zoom(zoom).build();
+                    .target(latLng).bearing(mGoogleMap.getCameraPosition().bearing).zoom(zoom).build();
 
             mGoogleMap.animateCamera(CameraUpdateFactory
                     .newCameraPosition(cameraPosition));
